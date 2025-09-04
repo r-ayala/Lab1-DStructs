@@ -1,4 +1,4 @@
-// Put your name here
+// Ruben Ayala
 
 #include "functions.h"
 
@@ -16,18 +16,20 @@ double METERS_PER_SEC_TO_MILES_PER_SEC = (3600 * (1/1609)) ;
 double getInput(const string& prompt)
 {
   double input = 0;
-  cout << prompt ;
-  cin >> input;
+  bool isPositive = false;
+  
+  while (isPositive != true)
+  {
+      cout << prompt;
+      cin >> input;
+      
+      if (input > 0)
+      {
+        isPositive = true;
+      }
+  }
 
-  if (input > 0)
-  {
-    return input;
-  }
-  else
-  {
-    cout << prompt;
-    cin >> input;
-  }
+  return input;
 }
 
 // converts inches to meters
