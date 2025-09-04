@@ -7,7 +7,7 @@
 
 using namespace std;
 //Constants
-double INCHES_TO_METERS = 2.5;
+double INCHES_TO_METERS = 0.025;
 double METERS_PER_SEC_TO_MILES_PER_SEC = (3600 * (1/1609)) ;
 
 // Implement the functions from functions.h here
