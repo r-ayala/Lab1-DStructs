@@ -1,37 +1,48 @@
-// Put your name here
+// Ruben Ayala
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 #include "functions.h"
 
 using namespace std;
-
-int main(){
+int main()
+{
 
   // Implement your main program here using the functions declared in funtions.h
 
-  int numOfInputs = 4;
-  int inputs[4];
-  int spaceMaker = 15;
+  const int NUM_VEHICLES = 4;
+  double times[NUM_VEHICLES];
+  double distanceInInches = 0;
   
-  for (int i = 0; i < 4; ++i)
+  distanceInInches = getInput("Enter the distance between the wires (in inches): ");
+  
+  for (int i = 0; i < NUM_VEHICLES; ++i)
     {
-      inputs[i] = getInput();
+      times[i] = getInput("Enter time recorded (seconds): ");
     }
 
-  // Following code prints out message with info
-  int vehicleNum = 1;
-cout << "Vehicle Time (seconds) Speed (m/s) Speed (mph)" << endl;
-  for (int i = 0; i < 4; ++i)
-    {
-      cout << vehicleNum << string(14, ' ') << inputs[i] << string (10, ' ') <<
-              inputs[i].getSpeed() << string (10, ' ') << inputs[i].getSpeed().convertSpeed(); << endl;
+    double distanceInMeters = convertDistance(distanceInInches);
+    cout << fixed << std::setprecision(2);
+    
+    cout << "\n\n";
+    cout << "Vehicle" << string(5, ' ') << "Time (seconds)" << string(7, ' ')
+        << "Speed (m/s)" << string(7, ' ') << "Speed (mph)" << endl;
 
-      ++vehicleNum;
+    for (int i = 0; i < NUM_VEHICLES; ++i)
+    {
+        int vehicleNumber = i + 1;
+        double speedInMetersPerSec = getSpeed(distanceInMeters, times[i]);
+        double speedInMPH = convertSpeed(speedInMetersPerSec);
+        
+        
+        cout << vehicleNumber << string(20, ' ') << times[i] << string(7, ' ')
+            << string(7, ' ') << speedInMetersPerSec << string(14, ' ') 
+            << speedInMPH << endl;
     }
   
       
   
-  return 0;
+return 0;
 }
